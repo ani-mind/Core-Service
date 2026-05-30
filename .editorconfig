@@ -9,6 +9,10 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+# Настройки для YAML/YML (GitHub Actions, Docker Compose и т.д.)
+[*.{yml,yaml}]
+indent_size = 2
+
 # Настройки специфичные для C# кода
 [*.cs]
 
