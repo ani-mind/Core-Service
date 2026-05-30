@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniMind.Core.Api", "AniMind.Core.Api\AniMind.Core.Api.csproj", "{8358D795-A7BD-4893-A502-C4E376503E54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniMind.Contracts.ServiceDefaults", "AniMind.Contracts.ServiceDefaults\AniMind.Contracts.ServiceDefaults.csproj", "{CA229CAA-D0B5-463C-A431-A7AF33278BC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{D011467B-DC8C-4755-BE6C-2BD641A3DD1A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8358D795-A7BD-4893-A502-C4E376503E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8358D795-A7BD-4893-A502-C4E376503E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8358D795-A7BD-4893-A502-C4E376503E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8358D795-A7BD-4893-A502-C4E376503E54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA229CAA-D0B5-463C-A431-A7AF33278BC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA229CAA-D0B5-463C-A431-A7AF33278BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA229CAA-D0B5-463C-A431-A7AF33278BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA229CAA-D0B5-463C-A431-A7AF33278BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
