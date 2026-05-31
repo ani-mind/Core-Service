@@ -1,9 +1,12 @@
+using AniMind.Contracts.ServiceDefaults;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+
+builder.AddServiceDefaults();
 
 var app = builder.Build();
 
@@ -24,5 +27,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapDefaultEndpoints();
 
 await app.RunAsync();
