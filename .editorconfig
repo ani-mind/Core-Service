@@ -32,6 +32,9 @@ csharp_style_var_elsewhere = true:suggestion
 # Требовать модификаторы доступности явно
 dotnet_style_require_accessibility_modifiers = always:warning
 
+# Запрещаем IDE удалять скобки и требуем их наличия всегда
+csharp_prefer_braces = true:warning
+
 # Правила именования (Naming Conventions)
 # 1. Интерфейсы должны начинаться с буквы I
 dotnet_naming_rule.interface_should_be_begun_with_i.severity = warning
