@@ -109,3 +109,6 @@ dotnet_diagnostic.SA1413.severity = none
 
 # SA0001: Запрещаем StyleCop паниковать из-за выключенной генерации XML-доков компилятором
 dotnet_diagnostic.SA0001.severity = none
+
+# CA1848: Отключаем паранойю по поводу перформанса логгера (разрешаем обычный LogInformation)
+dotnet_diagnostic.CA1848.severity = none
