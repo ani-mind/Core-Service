@@ -1,12 +1,15 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OpenTelemetry;
+using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using Serilog;
 
 namespace AniMind.Contracts.ServiceDefaults;
 
@@ -27,9 +30,10 @@ public static class Extensions
         builder.Services.ConfigureHttpClientDefaults(http =>
         {
             http.AddStandardResilienceHandler();
-
             http.AddServiceDiscovery();
         });
+
+        builder.AddLogging();
 
         return builder;
     }
@@ -89,10 +93,31 @@ public static class Extensions
         where TBuilder : IHostApplicationBuilder
     {
         var useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
-
         if (useOtlpExporter)
         {
-            builder.Services.AddOpenTelemetry().UseOtlpExporter();
+            builder.Services.ConfigureOpenTelemetryTracerProvider(tracing => tracing.AddOtlpExporter());
+            builder.Services.ConfigureOpenTelemetryMeterProvider(metrics => metrics.AddOtlpExporter());
+            builder.Logging.AddOpenTelemetry(logging => logging.AddOtlpExporter());
         }
+    }
+
+    private static void AddLogging(this IHostApplicationBuilder builder)
+    {
+        builder.Logging.ClearProviders();
+
+        builder.Services.AddSerilog((_, loggerConfiguration) =>
+        {
+            var seqUrl = builder.Configuration.GetConnectionString("seq");
+
+            loggerConfiguration
+                .ReadFrom.Configuration(builder.Configuration)
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty("Application", builder.Environment.ApplicationName);
+
+            if (!string.IsNullOrWhiteSpace(seqUrl))
+            {
+                loggerConfiguration.WriteTo.Seq(seqUrl, formatProvider: CultureInfo.InvariantCulture);
+            }
+        });
     }
 }
