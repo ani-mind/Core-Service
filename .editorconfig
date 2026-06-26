@@ -112,3 +112,51 @@ dotnet_diagnostic.SA0001.severity = none
 
 # CA1848: Отключаем паранойю по поводу перформанса логгера (разрешаем обычный LogInformation)
 dotnet_diagnostic.CA1848.severity = none
+
+# Отключаем принудительный формат комментариев для свойств (StyleCop)
+dotnet_diagnostic.SA1623.severity = none
+
+# Отключаем ругань на порядок операторов/методов/свойств внутри класса
+dotnet_diagnostic.SA1201.severity = none
+
+# Отключаем ругань Sonar на отсутствие операторов сравнения при реализации IComparable
+dotnet_diagnostic.S3928.severity = none
+
+# В зависимости от версии Sonar или встроенного линтера, код правила может быть CA1036
+dotnet_diagnostic.CA1036.severity = none
+
+# Отключаем требование отсутствия пустых строк после однострочных комментариев
+dotnet_diagnostic.SA1512.severity = none
+
+# Разрешаем оставлять инициализаторы конструкторов на той же строке
+dotnet_diagnostic.SA1128.severity = none
+
+# Требуем использовать стрелочные методы (=>) для однострочников
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+
+# Сохраняем компактный синтаксис new(...) вместо явного new Error(...)
+csharp_style_implicit_object_creation = true:suggestion
+
+# Отключаем ругань на конфликты имен с ключевыми словами других языков .NET (VB.NET)
+dotnet_diagnostic.CA1716.severity = none
+dotnet_diagnostic.CA1711.severity = none
+
+# Отключаем принудительные фигурные скобки для однострочных if
+dotnet_diagnostic.SA1503.severity = none
+
+# Отключаем ругань на статические члены внутри дженерик-типов
+dotnet_diagnostic.CA1000.severity = none
+
+# Отключаем ругань на отсутствие точки в конце описания к членам типов
+dotnet_diagnostic.SA1629.severity = none
+
+# Жестко требуем: static ВСЕГДА идет перед new. Настройка для автоформатера IDE.
+csharp_preferred_modifier_order = public, private, protected, internal, static, extern, new, virtual, abstract, sealed, override, readonly, unsafe, volatile, async:suggestion
+
+# Отключаем устаревшее требование использовать default вместо new() для структур
+dotnet_diagnostic.SA1129.severity = none
+
+# Разрешаем именам файлов не совпадать с первым объявленным типом
+# Исключение СТРОГО для файла ResultGeneric.cs
+[**/ResultGeneric.cs]
+dotnet_diagnostic.SA1649.severity = none
